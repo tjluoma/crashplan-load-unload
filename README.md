@@ -6,18 +6,22 @@ Shell scripts to load or unload CrashPlan on Mac OS X
 
 ## Background ##
 
-In [Mac Power Users 145: Keyboard Maestro Turns 6], [Katie Floyd] was looking for a way to automatically pause and unpause CrashPlan and Dropbox at the start/end of her podcasting sessions.  She also wanted to set her Google Voice to Do-Not-Disturb. 
+In [Mac Power Users 145: Keyboard Maestro Turns 6], [Katie Floyd] was looking for a way to automatically pause and un-pause CrashPlan and Dropbox at the start/end of her podcasting sessions.  She also wanted to set her Google Voice to Do-Not-Disturb. 
 
 Well, the short answer is "no" for all three.
 
 1. There's no API at all for Google Voice, so as far as I know there's no way to set the Google Voice to DND.
-2. Although the Dropbox client for Linux has had a command-line tool for years, the Mac client does not, and it is not scriptable unless you want to try to script selecting stuff on the menu bar. Which is a horrible idea. Don't do that. It won't work. The only *automatic* thing you can do for Dropbox is quit it and restart it, which stinks because Dropbox is horribly inefficient at startup time. Pausing is much better if you can do it.
+
+2. Although the Dropbox client for Linux has had a command-line tool for years, the Mac client does not, and it is not scriptable unless you want to try to script selecting stuff on the menu bar. Which is a horrible idea. Don't do that. It won't work. The only *automatic* thing you can do for Dropbox is quit it and restart it, which stinks because Dropbox is horribly inefficient at startup time. Pausing is much better if you can do it. But you can't automate it. 
+
 3. There is no way to 'pause' CrashPlan via script -- as far as I know.
 
 That's the bad news. There is *some* good news.
 
 1. You can pop up a notification reminder to turn your Google Voice to DND and then use your iPhone app to do that while the rest of the macro is running.
+
 2. You can (pretty easily) tell Dropbox to quit at the start of your podcasting and restart when it is over.
+
 3. Likewise, you can tell CrashPlan to start/stop when your podcasting session starts/ends.
 
 ### How I recommend doing this ###
@@ -36,7 +40,9 @@ I *also* suggested pausing Time Machine in a similar way:
 
 ### What Keyboard Maestro "trigger" should you use. ###
 
-Katie really likes the USB actions in Keyboard Maestro, and for good reason -- they're cool. But, like [David], I use my USB microphone for more than just podcasting. However, I don't use Skype *except* when I'm podcasting, and really, the reason that we're turning off these things is that they're going to interfere with *Skype.* So I run my triggers off of Skype launching or quitting.
+Katie really likes the USB actions in Keyboard Maestro, and for good reason -- they're cool. But, like [David], I use my USB microphone for more than just podcasting. 
+
+However, I don't use Skype *except* when I'm podcasting, and really, the reason that we're turning off these things is that they're going to interfere with *Skype.* So I run my triggers off of Skype launching or quitting.
 
 ## Included in this Repo are two scripts to load or unload CrashPlan 
 
@@ -61,6 +67,14 @@ As someone who only records a podcast every other week or so, I find it much eas
 I created a second 'administrator' account on my Mac, and loaded it only with the apps that I use for podcasting. Skype will auto-launch, Dropbox won't. Time Machine is not configured. iMessage is not configured. No email or Twitter accounts are configured. I have no `launchd` processes or Keyboard Maestro time-triggers on that account.
 
 However, since CrashPlan is run by root, I still need to load/unload it when I log into that account
+
+
+### A devious Dropbox idea ###
+
+As I was writing this up, I realized that there _is_ a way to pause/un-pause Dropbox. It's **not** a very _good_ way, but it's _a_ way. You can find it at <https://github.com/tjluoma/dropbox-pause-unpause>.
+
+<!-- Reference Links -->
+
 
 [on TUAW back in March]: http://www.tuaw.com/2013/03/12/keyboard-maestro-before-and-after-skype-podcasting/ 
 
